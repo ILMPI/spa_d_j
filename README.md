@@ -1,32 +1,28 @@
-# Astro Starter Kit: Basics
-
-```sh
-npm create astro@latest -- --template basics
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── robots.txt
 ├── src
 │   ├── assets
-│   │   └── astro.svg
 │   ├── components
-│   │   └── Welcome.astro
 │   ├── layouts
-│   │   └── Layout.astro
 │   └── pages
 │       └── index.astro
-└── package.json
+├── tests/
+│   └── example.spec.ts
+├── astro.config.mjs
+├── package.json
+├── playwright.config.ts
+├── tsconfig.json
+└── vitest.config.ts
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
 
 ## 🧞 Commands
 
@@ -40,7 +36,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run test:unit`       | Runs Vitest unit tests once                      |
+| `npm run test:unit:watch` | Runs Vitest unit tests in watch mode             |
+| `npx playwright install`  | Downloads required browser binaries for E2E tests|
+| `npm run test:e2e`        | Runs Playwright E2E tests headlessly             |
+| `npm run test:e2e:ui`     | Runs Playwright E2E tests with interactive UI    |
 
-## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
