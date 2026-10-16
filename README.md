@@ -43,3 +43,21 @@ All commands are run from the root of the project, from a terminal:
 | `npm run test:e2e:ui`     | Runs Playwright E2E tests with interactive UI    |
 
 
+## 📝 Commit Message Guidelines
+
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+| Prefix | Usage |
+| :--- | :--- |
+| `feat:` | New user-facing features or components |
+| `fix:` | Bug fixes |
+| `build:` | Build configuration, bundler, or dependency updates (`astro.config`, `vitest.config`, `package.json`) |
+| `ci:` | CI/CD pipeline changes (`.github/workflows/`) |
+| `test:` | Adding, updating, or refactoring unit or E2E tests |
+| `docs:` | Documentation updates only (`README.md`, comments) |
+| `refactor:` | Code restructuring without behavior changes |
+| `style:` | Formatting, whitespace, or linting adjustments |
+| `chore:` | Routine maintenance tasks (e.g., updating `.gitignore`) |
+
+**Format:** `<type>(optional-scope): <imperative description>`  
+**Example:** `feat(navbar): add responsive desktop navigation bar`
