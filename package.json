@@ -11,12 +11,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:unit": "vitest run",
-    "test:unit:watch":"vitest",
-    "test:e2e":"playwright test",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "astro": "^7.3.8"
+    "astro": "^7.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
