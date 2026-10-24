@@ -1,0 +1,70 @@
+<header class="site-header">
+  <div class="header-container">
+    <a href="#inicio" class="logo">DALTON JAUREGUI</a>
+    
+    <nav class="desktop-nav">
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#network">Colaboradores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed; /* Keeps it at the top of the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg); /* Matches your global background */
+    z-index: 100; /* Ensures it stays above scrolling content */
+    border-bottom: 1px solid #eaeaea; /* Minimalist separator */
+  }
+
+  .header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: 32px;
+
+	/* font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal; */
+  }
+
+  .desktop-nav a {
+    text-decoration: none;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .desktop-nav a:hover {
+    color: var(--color-text);
+  }
+
+  /* Basic responsive rule: hide desktop nav on small screens for now */
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+  }
+</style>
