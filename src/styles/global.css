@@ -1,0 +1,70 @@
+@import './reset.css';
+
+:root {
+
+    --color-plum: #401823;
+  --color-moon: #070D0C;
+  --color-warrior: #1B2623;
+  --color-granola: #B9996A;
+  --color-woods: #8C683B;
+  --color-brown: #59452C;
+
+  --bg-primary: var(--color-moon);
+  --bg-secondary: var(--color-warrior);
+  --text-primary: var(--color-granola);
+  --text-body: #E0E0E0;
+  --border-accent: var(--color-woods);
+
+  /*
+
+  Cinzel Decorative
+  Calibri (sans serif) = Open Sans
+  */
+  /* Typography (To be imported later) */
+  --font-heading: 'Playfair Display', serif; /* Elegant, editorial */
+  /* font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal; */
+
+  --font-body: 'Inter', system-ui, sans-serif; /* Clean, modern */
+
+/* Fluid Typography: Scales smoothly based on screen width (vw) */
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 5rem);   /* Giant on desktop, readable on mobile */
+  --fs-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
+  --fs-body: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+
+  /* Fluid Spacing: Adjusts vertical padding based on screen height (vh) */
+  --spacing-y: clamp(60px, 10vh, 150px);
+  --spacing-x: clamp(20px, 5vw, 60px);
+  
+
+  /* Layout & Spacing */
+  --max-width: 1200px;
+  --section-padding: 120px 24px; /* Large vertical padding lets content breathe */
+}
+
+
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling for the One-Page menu */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-primary);
+    
+  }
+
+  section {
+    min-height: 100vh;
+    padding: var(--section-padding);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
