@@ -1,14 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <header class="site-header">
   <div class="header-container">
     <a href="#inicio" class="logo">DALTON JAUREGUI</a>
     
     <!--desktop nav -->
     <nav class="desktop-nav">
-      <a href="#quienes-somos">Quiénes somos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#network">Colaboradores</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#quienes-somos">{t('nav.about')}</a>
+      <a href="#servicios">{t('nav.services')}</a>
+      <a href="#proyectos">{t('nav.projects')}</a>
+      <a href="#network">{t('nav.network')}</a>
+      <a href="#contacto">{t('nav.contact')}</a>
+
+      <div class="lang-switcher">
+        <a href={`${import.meta.env.BASE_URL}`} class={lang === 'es' ? 'active' : ''}>ES</a>
+        <span class="divider">/</span>
+        <a href={`${import.meta.env.BASE_URL}/en/`} class={lang === 'en' ? 'active' : ''}>EN</a>
+      </div>
     </nav>
 
     <!--button mobile menu -->
@@ -29,6 +42,12 @@
       <a href="#proyectos" class="mobile-link">Proyectos</a>
       <a href="#network" class="mobile-link">Colaboradores</a>
       <a href="#contacto" class="mobile-link">Contacto</a>
+
+      <div class="lang-switcher mobile-link">
+        <a href={`${import.meta.env.BASE_URL}`} class={lang === 'es' ? 'active' : ''}>ES</a>
+        <span class="divider">/</span>
+        <a href={`${import.meta.env.BASE_URL}/en/`} class={lang === 'en' ? 'active' : ''}>EN</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -140,7 +159,7 @@
   }
 
   .desktop-nav {
-      display: none; /* Oculto en móvil por defecto */
+      display: none;
     }
 
 
@@ -148,7 +167,7 @@
 
   @media (min-width: 992px) {
       .mobile-toggle {
-        display: none; /* Oculta la llave en escritorio */
+        display: none;
       }
       
       .desktop-nav {
@@ -171,7 +190,41 @@
       }
     }
 
+    .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
 
+  .lang-switcher a {
+    text-decoration: none;
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  .lang-switcher a:hover {
+    color: var(--text-primary);
+  }
+
+
+  .lang-switcher a.active {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .lang-switcher .divider {
+    color: var(--color-accent);
+    opacity: 0.5;
+  }
+
+
+  .mobile-overlay .lang-switcher {
+    margin-top: 24px;
+    font-size: 1.25rem;
+  }
 
 
 </style>
