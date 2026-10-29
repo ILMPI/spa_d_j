@@ -2,7 +2,7 @@
 
 :root {
 
-    --color-plum: #401823;
+  --color-plum: #401823;
   --color-moon: #070D0C;
   --color-warrior: #1B2623;
   --color-granola: #B9996A;
@@ -15,48 +15,40 @@
   --text-body: #E0E0E0;
   --border-accent: var(--color-woods);
 
-  /*
+  --font-heading: 'Cinzel Decorative', 'Georgia', 'Baskerville', 'Times New Roman', serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  Cinzel Decorative
-  Calibri (sans serif) = Open Sans
-  */
-  /* Typography (To be imported later) */
-  --font-heading: 'Playfair Display', serif; /* Elegant, editorial */
-  /* font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal; */
 
-  --font-body: 'Inter', system-ui, sans-serif; /* Clean, modern */
 
 /* Fluid Typography: Scales smoothly based on screen width (vw) */
   --fs-h1: clamp(2.5rem, 5vw + 1rem, 5rem);   /* Giant on desktop, readable on mobile */
   --fs-h2: clamp(2rem, 4vw + 1rem, 3.5rem);
   --fs-body: clamp(1rem, 1vw + 0.5rem, 1.125rem);
 
-  /* Fluid Spacing: Adjusts vertical padding based on screen height (vh) */
   --spacing-y: clamp(60px, 10vh, 150px);
   --spacing-x: clamp(20px, 5vw, 60px);
   
 
   /* Layout & Spacing */
   --max-width: 1200px;
-  --section-padding: 120px 24px; /* Large vertical padding lets content breathe */
+  --section-padding: 120px 24px;
 }
 
 
 html {
-  scroll-behavior: smooth; /* Enables smooth scrolling for the One-Page menu */
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-body);
+  font-family: var(--font-body)
 
 }
 
 h1, h2, h3, h4 {
     color: var(--text-primary);
-    
+    font-family: var(--font-heading)
   }
 
   section {
