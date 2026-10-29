@@ -1,3 +1,184 @@
-    <section id="servicios">
-      <h2>Servicios</h2>
-    </section>
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const businessItems = [
+  { key: "item1", numeral: "I" },
+  { key: "item2", numeral: "II" },
+  { key: "item3", numeral: "III" },
+  { key: "item4", numeral: "IV" },
+  { key: "item5", numeral: "V" },
+] as const;
+
+const cultureItems = [
+  { key: "item1", numeral: "I" },
+  { key: "item2", numeral: "II" },
+  { key: "item3", numeral: "III" },
+  { key: "item4", numeral: "IV" },
+  { key: "item5", numeral: "V" },
+] as const;
+---
+<section id="servicios" class="services-section">
+  <div class="container">
+    <header class="section-header">
+      <span class="tag">{t('services.tag')}</span>
+      <h2 class="section-title">{t('services.title')}</h2>
+      <p class="section-subtitle">{t('services.subtitle')}</p>
+    </header>
+
+    <div class="capabilities-ribbon">
+      <span>{t('services.verbs')}</span>
+    </div>
+
+    <div class="services-grid">
+      <article class="services-column">
+        <div class="column-header">
+          <h3 class="column-title">{t('services.business.title')}</h3>
+          <p class="column-desc">{t('services.business.desc')}</p>
+        </div>
+        <ol class="service-list">
+          {businessItems.map((item, index) => (
+            <li class="service-item">
+              <span class="service-num">{item.numeral}</span>        
+              <div class="service-content">
+                <h4 class="service-name">{t(`services.business.${item.key}.name` as any)}</h4>
+                <p class="service-desc">{t(`services.business.${item.key}.desc` as any)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </article>
+
+      <article class="services-column">
+        <div class="column-header">
+          <h3 class="column-title">{t('services.culture.title')}</h3>
+          <p class="column-desc">{t('services.culture.desc')}</p>
+        </div>
+        <ol class="service-list">
+          {cultureItems.map((item, index) => (
+            <li class="service-item">
+              <span class="service-num">{item.numeral}</span>
+              <div class="service-content">                 
+                <h4 class="service-name">{t(`services.culture.${item.key}.name` as any)}</h4>
+                <p class="service-desc">{t(`services.culture.${item.key}.desc` as any)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .services-section{
+    background-color: var(--color-moon);
+    color: var(--text-body);
+    padding: clamp(80px, 12vh, 160px) var(--spacing-x);
+  }
+
+
+  .tag{
+    font-family: var(--font-body);
+    color: var(--color-granola);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+
+  .section-title{
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--color-granola);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    margin: 16px 0;
+  }
+
+
+  .capabilities-ribbon{
+    border-block: 1px solid color-mix(in srgb, var(--color-woods) 30%, transparent);
+    padding: 18px 0;
+    font-family: var(--font-body);
+    letter-spacing: 3px;
+    color: var(--color-granola);
+    text-align: center;
+
+    font-size: 0.8rem;
+
+    margin-top: clamp(40px, 6vh, 80px);
+    margin-bottom: clamp(48px, 8vh, 96px);
+  }
+
+
+  .services-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    margin-top: 64px;
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-list li{
+    /* border-bottom: 1px solid var(--color-granola); */
+    padding: 24px 0;
+  }
+
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-woods) 20%, transparent);
+  }
+
+.service-desc {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.7;
+}
+
+
+  .service-content {
+    flex: 1;
+  }
+
+
+  .service-num {
+    min-width: 28px;
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--fs-body);
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: color-mix(in srgb, var(--color-granola) 60%, transparent);
+    white-space: nowrap;
+    margin-bottom: 8px;
+  }
+
+
+  @media (min-width: 992px){
+
+
+    .services-grid{
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+    }
+
+
+
+ }
+    
+</style>

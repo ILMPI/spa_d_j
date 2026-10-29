@@ -34,4 +34,4 @@ pnpm-debug.log*
 /playwright/.auth/
 
 # Vitest reports and artifacts
-.vitest/
+.vitest/*.deb
