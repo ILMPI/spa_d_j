@@ -1,4 +1,12 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+interface MediaItem {
+  type: "video" | "image";
+  src: string;
+  poster?: string;
+}
+
 interface Project {
   id: string;
   category: string;
@@ -7,9 +15,7 @@ interface Project {
   title: string;
   year: string;
   badges: string[];
-  mediaType: "video" | "image";
-  mediaSrc: string;
-  posterSrc?: string;
+  media: MediaItem[];
   description: string;
   technicalSpecs?: {
     master: string;
@@ -26,73 +32,67 @@ const projects: Project[] = [
     title: "AUDIOVISUAL",
     year: "2026",
     badges: ["ORIGINAL IP", "EXECUTIVE PRODUCTION", "SOUND"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/ident-audiovisual.jpg",
+    media: [
+      {type: "image", src: "/assets/projects/ident-audiovisual.jpg"}
+    ],
     description: "Pieza identitaria audiovisual original para Dalton Jáuregui. Masterización DCI 4K a 24fps con diseño sonoro orquestal y licencia comercial integral.",
     technicalSpecs: {
       master: "4096x2160 DCI 4K 24fps .mov / 3840x2160 UHD 4K .mp4",
       sound: "Artlist Original · Epic Orchestral - Royal String / Chroma SFX"
     }
   },
-  {
-    id: "lisa-vma",
-    category: "SHOW",
-    credits: "C PRINZ · SMUGGLER",
-    client: "LISA",
-    title: "VMA'S 2026",
-    year: "2026",
-    badges: ["SHOW CONTENT", "VFX"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/lisa-vma.jpg",
-    description: "Dirección creativa de contenidos de pantalla y coordinación de producción escénica para la actuación en directo en los MTV Video Music Awards."
-  },
-  {
-    id: "arca-fxck",
-    category: "MUSIC VIDEO",
-    credits: "DANIEL SANNWALD · SOMESUCH CO",
-    client: "ARCA",
-    title: "FXCK",
+{
+    id: "private-dining-biennale",
+    category: "BUSINESS & CORPORATE",
+    credits: "PRIVATE OFFICE · CHEF RESIDENCY",
+    client: "BIENNALE DI VENEZIA",
+    title: "PRIVATE HOSTING & GOURMET",
     year: "2025",
-    badges: ["VFX", "COLOR"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/arca-fxck.jpg",
-    description: "Coproducción ejecutiva, supervisión técnica de efectos visuales y etalonaje digital para pieza musical conceptual."
+    badges: ["GOURMET", "HOSPITALITY", "EVENTS"],
+        media: [
+      {type: "image", src: "/assets/projects/venice-gourmet.jpg"}
+    ],
+    description: "Diseño de experiencia gastronómica privada, maridaje de autor y gestión integral de hospitalidad para patronos y coleccionistas internacionales."
   },
-  {
-    id: "under-armour",
-    category: "COMMERCIAL",
-    credits: "LORIS RUSSIER · DRKT STUDIOS",
-    client: "UNDER ARMOUR",
-    title: "ATHLETES ONLY",
+{
+    id: "artist-management-tour",
+    category: "CULTURE & CREATIVE",
+    credits: "LIVE ENTERTAINMENT · SONY MUSIC",
+    client: "GIRA INTERNACIONAL",
+    title: "TOUR DIRECTION & BOOKING",
     year: "2025",
-    badges: ["COLOR", "EDITING", "VFX"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/under-armour.jpg",
-    description: "Campaña audiovisual global orientada al rendimiento deportivo de élite, integrando montaje rítmico de alta velocidad y etalonaje dinámico."
+    badges: ["ARTIST MANAGEMENT", "LIVE PRODUCTION", "MUSIC"],
+    media: [
+      {type: "image", src: "/assets/projects/artist-tour.jpg"}
+    ],
+    description: "Representación estratégica, producción técnica de directo y coordinación logística de movilidad premium a lo largo de 14 recintos europeos."
   },
-  {
-    id: "dudamel-abramovic",
-    category: "SHOW",
-    credits: "NABIL ELDERKIN",
-    client: "DUDAMEL & ABRAMOVIĆ",
-    title: "TEATRO DI SAN CARLO",
-    year: "2025",
-    badges: ["AI", "COLOR", "EDITING", "VFX"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/dudamel-abramovic.jpg",
-    description: "Producción ejecutiva documental y diseño escénico para la colaboración artística entre Gustavo Dudamel y Marina Abramović en Nápoles."
-  },
-  {
-    id: "nas-dj-premier",
-    category: "MUSIC VIDEO",
-    credits: "JEAN-CHARLES CHARAVIN · GOOD COMPANY",
-    client: "NAS & DJ PREMIER",
-    title: "GIT READY",
+{
+    id: "luxury-mobility-summit",
+    category: "BUSINESS & CORPORATE",
+    credits: "MOBILITY DESK · PRIVATE FLEET",
+    client: "GLOBAL ASSET FORUM",
+    title: "TRANSPORT & LOGISTICS",
     year: "2024",
-    badges: ["AI", "COLOR", "EDITING", "SOUND", "VFX"],
-    mediaType: "image",
-    mediaSrc: "/assets/projects/nas-premier.jpg",
-    description: "Producción audiovisual y postproducción de acabado para el sencillo conmemorativo, combinando cinematografía 35mm y secuencias asistidas por IA."
+    badges: ["LOGISTICS", "MOBILITY", "OPERATIONS"],
+    media: [
+      {type: "image", src: "/assets/projects/summit-logistics.jpg"}
+    ],
+    description: "Operativa integral de transporte premium, custodia y traslados privados para delegaciones institucionales durante el foro de inversión."
+  },
+{
+    id: "documentary-film",
+    category: "CULTURE & CREATIVE",
+    credits: "STUDIO PRODUCTION · 35MM",
+    client: "LARGOMETRAJE DOCUMENTAL",
+    title: "MEMORIA Y TERRITORIO",
+    year: "2024",
+    badges: ["AUDIOVISUAL", "DIRECTION", "COLOR"],
+    media: [
+      {type: "image", src: "/assets/projects/documentary-territorio.jpg"},
+      {type: "video", src: "/assets/projects/house.mp4"}
+    ],
+    description: "Producción ejecutiva y dirección de fotografía en 35mm para documental de autor enfocado en arquitectura vernácula y patrimonio cultural."
   }
 ];
 ---
@@ -141,13 +141,15 @@ const projects: Project[] = [
             </div>
           </button>
 
-          <div id={`drawer-${project.id}`} class="project-drawer" hidden>
+          <div id={`drawer-${project.id}`} class="project-drawer">
             <div class="drawer-content">
-              <div class="media-container">
-                {project.mediaType === "video" ? (
+            <div class="media-gallery">
+                {project.media.map((item) => (
+              <div class="media-item">
+                {item.type === "video" ? (
                   <video 
-                    src={project.mediaSrc} 
-                    poster={project.posterSrc} 
+                    src={`${baseUrl}${item.src}`} 
+                    poster={item.poster ? `${baseUrl}${item.poster}` : undefined} 
                     autoplay 
                     loop 
                     muted 
@@ -155,11 +157,13 @@ const projects: Project[] = [
                   />
                 ) : (
                   <img 
-                    src={project.mediaSrc} 
+                    src={`${baseUrl}${item.src}`} 
                     alt={`${project.client} - ${project.title}`} 
                     loading="lazy" 
                   />
-                )}
+                    )}
+                  </div>
+                ))}
               </div>
 
               <div class="info-block">
@@ -193,37 +197,41 @@ const projects: Project[] = [
         const item = trigger.closest<HTMLElement>(".project-item");
         if (!item) return;
 
-        const drawer = item.querySelector<HTMLElement>(".project-drawer");
         const togglePill = item.querySelector<HTMLElement>(".toggle-pill");
-        if (!drawer || !togglePill) return;
+        if (!togglePill) return;
 
         const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
+        
         document.querySelectorAll<HTMLElement>(".project-item").forEach((otherItem) => {
-          if (otherItem !== item) {
+          if (otherItem !== item && otherItem.classList.contains("is-open")) {
             const otherTrigger = otherItem.querySelector<HTMLButtonElement>(".project-trigger");
-            const otherDrawer = otherItem.querySelector<HTMLElement>(".project-drawer");
             const otherPill = otherItem.querySelector<HTMLElement>(".toggle-pill");
 
-            if (otherTrigger && otherDrawer && otherPill) {
-              otherTrigger.setAttribute("aria-expanded", "false");
-              otherDrawer.hidden = true;
-              otherItem.classList.remove("is-open");
+            otherTrigger?.setAttribute("aria-expanded", "false");
+            otherItem.classList.remove("is-open");
+            if (otherPill) {
               otherPill.textContent = otherPill.getAttribute("data-closed-label") || "VER CONTENIDO";
             }
           }
         });
 
+        
         if (isExpanded) {
           trigger.setAttribute("aria-expanded", "false");
-          drawer.hidden = true;
           item.classList.remove("is-open");
           togglePill.textContent = togglePill.getAttribute("data-closed-label") || "VER CONTENIDO";
         } else {
           trigger.setAttribute("aria-expanded", "true");
-          drawer.hidden = false;
           item.classList.add("is-open");
           togglePill.textContent = togglePill.getAttribute("data-open-label") || "OCULTAR";
+          
+          
+          setTimeout(() => {
+            const offset = 80;
+            const y = item.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }, 350);
         }
       });
     });
@@ -233,46 +241,17 @@ const projects: Project[] = [
   document.addEventListener("astro:after-swap", initAccordion);
 </script>
 
+
 <style>
   .projects-section {
     background-color: var(--color-moon);
     color: var(--color-granola);
-    padding: clamp(80px, 12vh, 160px) var(--spacing-x);
+    padding: var(--section-padding);
   }
 
   .container {
     max-width: var(--max-width);
     margin: 0 auto;
-  }
-
-  .section-header {
-    margin-bottom: clamp(48px, 8vh, 80px);
-  }
-
-  .tag {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-granola);
-    opacity: 0.8;
-  }
-
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 400;
-    margin: 16px 0;
-    color: var(--color-granola);
-  }
-
-  .section-subtitle {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    line-height: 1.6;
-    max-width: 720px;
-    color: var(--color-granola);
-    opacity: 0.85;
   }
 
   .projects-accordion {
@@ -305,7 +284,7 @@ const projects: Project[] = [
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: var(--fs-meta);
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-granola);
@@ -315,27 +294,26 @@ const projects: Project[] = [
   .heading-row {
     display: flex;
     align-items: baseline;
-    gap: 14px;
+    gap: 16px;
     flex-wrap: wrap;
   }
 
   .client-name {
     font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-size: var(--fs-h2);
     font-weight: 400;
     color: var(--color-granola);
-    letter-spacing: 1px;
-    margin: 0;
     line-height: 1.1;
   }
 
   .project-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3vw, 2.3rem);
-    font-style: italic;
-    font-weight: 400;
-    color: color-mix(in srgb, var(--color-granola) 55%, transparent);
-    line-height: 1.1;
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: color-mix(in srgb, var(--color-granola) 65%, transparent);
+    line-height: 1.4;
+    margin-top: 8px;
   }
 
   .badges-row {
@@ -348,12 +326,12 @@ const projects: Project[] = [
 
   .toggle-pill {
     font-family: var(--font-body);
-    font-size: 0.65rem;
+    font-size: var(--fs-badge);
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--color-granola);
     border: 1px solid var(--color-granola);
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 2px;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
@@ -365,7 +343,7 @@ const projects: Project[] = [
 
   .badge {
     font-family: var(--font-body);
-    font-size: 0.65rem;
+    font-size: var(--fs-badge);
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--color-granola);
@@ -375,17 +353,50 @@ const projects: Project[] = [
     opacity: 0.75;
   }
 
-  .project-drawer {
-    padding-bottom: 40px;
+.project-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .drawer-content {
+  .project-item.is-open .project-drawer {
+    grid-template-rows: 1fr;
+  }
+
+.drawer-content {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding-bottom: 0px;
+    opacity: 0;
+    transition: padding-bottom 0.4s ease, opacity 0.3s ease;
   }
 
-  .media-container {
+
+  .drawer-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 0px;
+    opacity: 0;
+    transition: padding-bottom 0.4s ease, opacity 0.3s ease;
+  }
+
+  .project-item.is-open .drawer-content {
+    padding-bottom: 40px;
+    opacity: 1;
+  }
+
+.media-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+
+  .media-item {
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -393,21 +404,20 @@ const projects: Project[] = [
     border: 1px solid color-mix(in srgb, var(--color-woods) 30%, transparent);
   }
 
-  .media-container img,
-  .media-container video {
+  .media-item img,
+  .media-item video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-
   .info-block {
     max-width: 820px;
   }
 
   .description {
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: var(--fs-body);
     line-height: 1.7;
     color: var(--color-granola);
     opacity: 0.85;
@@ -424,7 +434,7 @@ const projects: Project[] = [
 
   .spec-line {
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: var(--fs-meta);
     line-height: 1.5;
     color: var(--color-granola);
     opacity: 0.6;
