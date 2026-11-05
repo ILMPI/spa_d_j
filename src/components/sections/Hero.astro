@@ -1,4 +1,278 @@
-    <section id="inicio">
-      <h1>DALTON JAUREGUI</h1>
-      <p>BUSINESS & CULTURE</p>
-    </section>
+---
+// import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+// const lang = getLangFromUrl(Astro.url);
+// const t = useTranslations(lang);
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<section class="hero-section">
+  <div class="hero-grid">
+
+    <div class="hero-background">
+    <img 
+      class="bg-image" 
+      src={`${baseUrl}/assets/door.jpeg`} 
+      alt="Dalton Jáuregui - Iron Gate" 
+    />
+    <div class="overlay-gradient"></div> 
+  </div>
+    
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="line"></span>
+        <span class="text">PRODUCCIÓN · CINE · AUDIOVISUAL</span>
+        <span class="line"></span>
+      </div>
+
+      <h1 class="hero-title">DALTON JAUREGUI</h1>
+      <h2 class="hero-subtitle">Historias que Trascienden</h2>
+
+      <div class="divider">
+        <span class="diamond"></span>
+      </div>
+
+      <p class="hero-description">
+        CREATIVIDAD, RIGOR Y EMOCIÓN AL SERVICIO<br/>DE GRANDES HISTORIAS.
+      </p>
+
+      <a href="#proyectos" class="btn-outline">
+        VER PROYECTOS <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+  <div class="hero-footer">
+    <div class="social-links">
+      <a href="#" aria-label="Instagram" class="icon-placeholder">IG</a>
+      <a href="#" aria-label="YouTube" class="icon-placeholder">YT</a>
+      <a href="#" aria-label="LinkedIn" class="icon-placeholder">IN</a>
+    </div>
+    
+    <div class="footer-line"></div>
+    
+    <div class="marquee-text">
+      BUENAS HISTORIAS · GRAN IMPACTO
+      <span class="line-short"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    background-color: var(--color-moon);
+    color: var(--color-granola);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--spacing-x);
+    padding-top: 120px;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+  }
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center; 
+  }
+
+  .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to right, var(--color-moon) 15%, transparent 75%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    gap: 40px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+  }
+
+
+.hero-content {
+    position: relative;
+    z-index: 10; 
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; 
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 120px 0 40px 0; 
+  }
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw + 1rem, 7rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 16px 0;
+    background: linear-gradient(180deg, #E6D5B8 0%, #A38C60 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 0 32px 0;
+    color: var(--color-granola);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-left: 60px; 
+  }
+
+  .diamond {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-granola);
+    transform: rotate(45deg);
+    position: relative;
+  }
+  
+  .diamond::before,
+  .diamond::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-granola) 40%, transparent);
+  }
+
+  .diamond::before { right: 12px; }
+  .diamond::after { left: 12px; }
+
+  .hero-description {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    line-height: 1.8;
+    letter-spacing: 2px;
+    max-width: 400px;
+    margin: 0 0 48px 0;
+    color: var(--color-granola);
+  }
+
+  .btn-outline {
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-granola);
+    border: 1px solid color-mix(in srgb, var(--color-granola) 60%, transparent);
+    padding: 16px 32px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-granola);
+    color: var(--color-moon);
+  }
+
+  .hero-footer {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .icon-placeholder {
+    color: var(--color-granola);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .icon-placeholder:hover {
+    opacity: 1;
+  }
+
+  .footer-line {
+    flex: 1;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-granola) 30%, transparent);
+    margin: 0 32px;
+  }
+
+  .marquee-text {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0.8;
+  }
+
+  .line-short {
+    height: 1px;
+    width: 24px;
+    background-color: var(--color-granola);
+  }
+
+
+  @media (max-width: 1024px) {
+    .overlay-gradient {
+      background: linear-gradient(to top, var(--color-moon) 10%, color-mix(in srgb, var(--color-moon) 75%, transparent) 100%);
+    }
+
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .divider {
+      margin-left: 0;
+    }
+
+    .hero-footer {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    
+    .footer-line {
+      display: none;
+    }
+  }
+</style>
