@@ -1,4 +1,351 @@
-    <section id="inicio">
-      <h1>DALTON JAUREGUI</h1>
-      <p>BUSINESS & CULTURE</p>
-    </section>
+---
+// import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+// const lang = getLangFromUrl(Astro.url);
+// const t = useTranslations(lang);
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<section class="hero-section">
+
+
+  <div class="hero-background">
+    <img 
+      class="bg-image" 
+      src={`${baseUrl}/assets/door.jpeg`} 
+      alt="Dalton Jáuregui - Iron Gate" 
+    />
+    <div class="overlay-gradient"></div> 
+  </div>
+  <div class="hero-grid">
+    
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="line"></span>
+        <span class="text">PRODUCCIÓN · CINE · AUDIOVISUAL</span>
+        <span class="line"></span>
+      </div>
+
+      <h1 class="hero-title">DALTON JAUREGUI</h1>
+      <h2 class="hero-subtitle">Historias que Trascienden</h2>
+
+<div class="divider">
+        <span class="divider-line"></span>
+        <svg class="diamond-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- The outer stroked diamond -->
+          <path d="M7.1465 1.48959C7.34176 1.29432 7.65835 1.29432 7.85361 1.48959L13.5105 7.14644C13.7057 7.3417 13.7057 7.65829 13.5105 7.85355L7.85361 13.5104C7.65835 13.7057 7.34176 13.7057 7.1465 13.5104L1.48965 7.85355C1.29439 7.65829 1.29439 7.3417 1.48965 7.14644L7.1465 1.48959ZM7.50005 2.55025L2.55031 7.49999L7.50005 12.4497L12.4498 7.49999L7.50005 2.55025Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          <!-- The inner filled diamond -->
+          <rect x="5.5" y="7.5" width="2.8" height="2.8" transform="rotate(-45 5.5 7.5)" fill="currentColor"/>
+        </svg>
+        <span class="divider-line"></span>
+      </div>
+
+      <p class="hero-description">
+        CREATIVIDAD, RIGOR Y EMOCIÓN AL SERVICIO<br/>DE GRANDES HISTORIAS.
+      </p>
+
+      <a href="#proyectos" class="btn-outline">
+        VER PROYECTOS <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+  <div class="hero-footer">
+    <div class="social-links">
+      <a href="#" aria-label="Instagram" class="icon-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path></svg></a>
+      <a href="#" aria-label="YouTube" class="icon-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"></path></svg></a>
+      <a href="#" aria-label="LinkedIn" class="icon-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg></a>
+    </div>
+    
+    <div class="footer-line"></div>
+    
+    <div class="marquee-text">
+      BUENAS HISTORIAS · GRAN IMPACTO
+      <span class="line-short"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    background-color: var(--color-moon);
+    color: var(--color-granola);
+    height: 100dvh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--spacing-x);
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+  }
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center; 
+  }
+
+  .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: 
+      linear-gradient(to right, var(--color-moon) 15%, color-mix(in srgb, var(--color-moon) 40%, transparent) 50%, transparent 85%),
+      linear-gradient(to bottom, var(--color-moon) 0%, transparent 15%, transparent 85%, var(--color-moon) 100%);
+  }
+
+  /* .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    gap: 40px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+  } */
+
+  .hero-grid {
+    position: relative;
+    z-index: 10;
+    flex: 1; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    /* padding-top: 140px;
+    padding-bottom: 20px; */
+    /* padding-top: clamp(80px, 12vh, 120px); 
+    padding-bottom: 20px; */
+  }
+
+.hero-content {
+    position: relative;
+    z-index: 10; 
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; 
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    /* padding: 120px 0 40px 0;  */
+    padding-top: clamp(80px, 12vh, 140px); 
+    padding-bottom: clamp(20px, 4vh, 40px);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 16px);
+    font-family: var(--font-body);
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: clamp(16px, 3vh, 32px);
+  }
+
+  .line {
+    height: 1px;
+    width: clamp(20px, 4vw, 40px);
+    background-color: color-mix(in srgb, var(--color-granola) 40%, transparent);
+  }
+
+.hero-title {
+    font-family: var(--font-heading);
+    /* font-size: clamp(3rem, 7vw + 1rem, 7rem); */
+    font-size: clamp(2.5rem, 8vw, 7.5rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 16px 0;
+    background: linear-gradient(180deg, #E6D5B8 0%, #A38C60 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 0 32px 0;
+    color: var(--color-granola);
+  }
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between the lines and the icon */
+    width: 100%;
+    max-width: 280px; /* Controls the total width of the line */
+    margin: 0 0 40px 0;
+    color: var(--color-granola);
+  }
+
+  .divider-line {
+    flex: 1; /* Makes the lines stretch equally on both sides */
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-granola) 40%, transparent);
+  }
+
+  .diamond-icon {
+    flex-shrink: 0; 
+  }
+
+  .hero-description {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    line-height: 1.8;
+    letter-spacing: 2px;
+    max-width: 400px;
+    margin: 0 0 48px 0;
+    color: var(--color-granola);
+  }
+
+  .btn-outline {
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-granola);
+    border: 1px solid color-mix(in srgb, var(--color-granola) 60%, transparent);
+    padding: 16px 32px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-granola);
+    color: var(--color-moon);
+  }
+
+  .hero-footer {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .icon-placeholder {
+    color: var(--color-granola);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    /* opacity: 0.8;
+    transition: opacity 0.2s ease; */
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-placeholder:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .footer-line {
+    flex: 1;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-granola) 30%, transparent);
+    margin: 0 32px;
+  }
+
+  .marquee-text {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0.8;
+    white-space: nowrap;
+  }
+
+  .line-short {
+    height: 1px;
+    width: 24px;
+    background-color: var(--color-granola);
+  }
+
+
+  @media (max-width: 1024px) {
+
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+
+
+    
+  }
+
+  @media (max-width: 768px) {
+
+      .hero-grid {
+      grid-template-columns: 1fr; /* Removes the 2-column split */
+      padding-top: 100px;
+    }
+
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+    .hero-empty-space {
+      display: none; /* Removes the empty gap on tablets/phones */
+    }
+  .overlay-gradient {
+    background: 
+      linear-gradient(to right, var(--color-moon) 35%, color-mix(in srgb, var(--color-moon) 70%, transparent) 80%, transparent 100%),
+      linear-gradient(to bottom, var(--color-moon) 0%, transparent 10%, transparent 90%, var(--color-moon) 100%);
+  }
+
+      .divider {
+      margin-left: 0;
+    }
+
+    .hero-footer {
+      /* flex-wrap: wrap; */
+      /* justify-content: center;
+      gap: 16px; */
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px 0 32px 0;
+    }
+
+    .footer-line {
+      /* margin: 0 16px; */
+      display: none
+    }
+}
+
+
+</style>
