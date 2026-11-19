@@ -1,0 +1,138 @@
+@import './reset.css';
+
+:root {
+
+  --color-plum: #401823;
+  --color-moon: #070D0C;
+  --color-warrior: #1B2623;
+  --color-granola: #B9996A;
+  --color-woods: #8C683B;
+  --color-brown: #59452C;
+
+  --bg-primary: var(--color-moon);
+  --bg-secondary: var(--color-warrior);
+  --text-primary: var(--color-granola);
+  --text-body: #E0E0E0;
+  --border-accent: var(--color-woods);
+
+  --font-heading: 'Cinzel Decorative', 'Georgia', 'Baskerville', 'Times New Roman', serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+
+  --fs-h1: clamp(2.5rem, 4.5vw + 1rem, 4.75rem);
+  --fs-h2: clamp(2rem, 3.5vw + 1rem, 3.75rem);
+  --fs-body: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+
+  --fs-meta: clamp(0.75rem, 0.8vw + 0.4rem, 0.95rem);
+  --fs-badge: clamp(0.65rem, 0.6vw + 0.4rem, 0.8rem);
+
+  --spacing-y: clamp(60px, 12vh, 200px);
+  --spacing-x: clamp(24px, 6vw, 80px);
+  
+
+  --max-width: 1400px;
+  --section-padding: var(--spacing-y) var(--spacing-x);
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  font-family: var(--font-body)
+
+}
+
+/* --- GLOBAL CINEMATIC DEPTH in the process--- */
+body {
+  position: relative;
+  background-color: var(--color-moon);
+  /* Ensure the body takes at least full height so effects don't cut off */
+  min-height: 100vh; 
+}
+
+/* 1. Global Film Grain */
+/* body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999; 
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}  */
+
+
+/* 2. Global Ambient Breathing Light */
+/* body::after {
+  content: "";
+  position: fixed;
+  top: 10%;
+  left: 30%;
+  width: 50vw;
+  height: 50vw;
+  z-index: -1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-granola) 6%, transparent) 0%, transparent 60%);
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: globalBreathe 25s ease-in-out infinite alternate;
+}
+
+@keyframes globalBreathe {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-10%, 15%) scale(1.3); }
+} */
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  font-family: var(--font-heading)
+}
+
+section {
+  min-height: 100vh;
+  padding: var(--section-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-header {
+  margin-bottom: clamp(48px, 8vh, 80px);
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-size: var(--fs-meta); 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-granola);
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 16px;
+}
+
+
+.section-title {
+font-family: var(--font-heading);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-granola);
+  margin: 0 0 24px 0;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  max-width: 720px;
+  color: var(--color-granola);
+  opacity: 0.85;
+  margin: 0;
+}

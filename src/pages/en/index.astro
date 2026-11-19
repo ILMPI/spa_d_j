@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/sections/Hero.astro";
+import About from "../../components/sections/About.astro";
+import Services from "../../components/sections/Services.astro";
+---
+
+<Layout title="Dalton Jáuregui | Business & Culture" lang="en">
+  <Navbar />
+  <main>
+
+   <!-- 01. Inicio -->
+	<Hero/>
+
+    <!-- 02. Quiénes somos -->
+	<About/>
+
+    <!-- 03. Servicios -->
+	<Services/>
+
+    <!-- 04. Proyectos -->
+    <section id="proyectos">
+      <h2>Selected Projects</h2>
+    </section>
+
+    <!-- 05. Nuestros colaboradores -->
+    <section id="network">
+      <h2>Our Network</h2>
+    </section>
+
+    <!-- 06. Contacto -->
+    <section id="contacto">
+      <h2>Let's create something meaningful.</h2>
+    </section>
+	</main>
+</Layout>

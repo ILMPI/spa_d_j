@@ -1,0 +1,464 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+interface MediaItem {
+  type: "video" | "image";
+  src: string;
+  poster?: string;
+}
+
+interface Project {
+  id: string;
+  category: string;
+  credits: string;
+  client: string;
+  title: string;
+  year: string;
+  badges: string[];
+  media: MediaItem[];
+  description: string;
+  technicalSpecs?: {
+    master: string;
+    sound: string;
+  };
+}
+
+const projects: Project[] = [
+  {
+    id: "ident-audiovisual",
+    category: "ORIGINAL IP",
+    credits: "ELU ANIMATIONS · ARTLIST",
+    client: "IDENT",
+    title: "AUDIOVISUAL",
+    year: "2026",
+    badges: ["ORIGINAL IP", "EXECUTIVE PRODUCTION", "SOUND"],
+    media: [
+      {type: "image", src: "/assets/projects/ident-audiovisual.jpg"}
+    ],
+    description: "Pieza identitaria audiovisual original para Dalton Jáuregui. Masterización DCI 4K a 24fps con diseño sonoro orquestal y licencia comercial integral.",
+    technicalSpecs: {
+      master: "4096x2160 DCI 4K 24fps .mov / 3840x2160 UHD 4K .mp4",
+      sound: "Artlist Original · Epic Orchestral - Royal String / Chroma SFX"
+    }
+  },
+{
+    id: "private-dining-biennale",
+    category: "BUSINESS & CORPORATE",
+    credits: "PRIVATE OFFICE · CHEF RESIDENCY",
+    client: "BIENNALE DI VENEZIA",
+    title: "PRIVATE HOSTING & GOURMET",
+    year: "2025",
+    badges: ["GOURMET", "HOSPITALITY", "EVENTS"],
+        media: [
+      {type: "image", src: "/assets/projects/venice-gourmet.jpg"}
+    ],
+    description: "Diseño de experiencia gastronómica privada, maridaje de autor y gestión integral de hospitalidad para patronos y coleccionistas internacionales."
+  },
+{
+    id: "artist-management-tour",
+    category: "CULTURE & CREATIVE",
+    credits: "LIVE ENTERTAINMENT · SONY MUSIC",
+    client: "GIRA INTERNACIONAL",
+    title: "TOUR DIRECTION & BOOKING",
+    year: "2025",
+    badges: ["ARTIST MANAGEMENT", "LIVE PRODUCTION", "MUSIC"],
+    media: [
+      {type: "image", src: "/assets/projects/artist-tour.jpg"}
+    ],
+    description: "Representación estratégica, producción técnica de directo y coordinación logística de movilidad premium a lo largo de 14 recintos europeos."
+  },
+{
+    id: "luxury-mobility-summit",
+    category: "BUSINESS & CORPORATE",
+    credits: "MOBILITY DESK · PRIVATE FLEET",
+    client: "GLOBAL ASSET FORUM",
+    title: "TRANSPORT & LOGISTICS",
+    year: "2024",
+    badges: ["LOGISTICS", "MOBILITY", "OPERATIONS"],
+    media: [
+      {type: "image", src: "/assets/projects/summit-logistics.jpg"}
+    ],
+    description: "Operativa integral de transporte premium, custodia y traslados privados para delegaciones institucionales durante el foro de inversión."
+  },
+{
+    id: "documentary-film",
+    category: "CULTURE & CREATIVE",
+    credits: "STUDIO PRODUCTION · 35MM",
+    client: "LARGOMETRAJE DOCUMENTAL",
+    title: "MEMORIA Y TERRITORIO",
+    year: "2024",
+    badges: ["AUDIOVISUAL", "DIRECTION", "COLOR"],
+    media: [
+      {type: "image", src: "/assets/projects/documentary-territorio.jpg"},
+      {type: "video", src: "/assets/projects/house.mp4"}
+    ],
+    description: "Producción ejecutiva y dirección de fotografía en 35mm para documental de autor enfocado en arquitectura vernácula y patrimonio cultural."
+  }
+];
+---
+
+<section id="proyectos" class="projects-section">
+  <div class="container">
+    
+    <header class="section-header">
+      <span class="tag">03 / PROYECTOS SELECCIONADOS</span>
+      <h2 class="section-title">Historias que trascienden.</h2>
+      <p class="section-subtitle">
+        Iniciativas y producciones que combinan rigor estratégico, talento creativo y estándares de ejecución técnica.
+      </p>
+    </header>
+
+    <div class="projects-accordion">
+      {projects.map((project) => (
+        <article class="project-item" data-project-id={project.id}>
+          <button 
+            type="button" 
+            class="project-trigger" 
+            aria-expanded="false" 
+            aria-controls={`drawer-${project.id}`}
+          >
+            <div class="meta-row">
+              <span class="category-credits">{project.category} · {project.credits}</span>
+              <span class="year">{project.year}</span>
+            </div>
+
+            <div class="heading-row">
+              <h3 class="client-name">{project.client}</h3>
+              <span class="project-title">{project.title}</span>
+            </div>
+
+            <div class="badges-row">
+              <span 
+                class="toggle-pill" 
+                data-open-label="OCULTAR" 
+                data-closed-label="VER CONTENIDO"
+              >
+                VER CONTENIDO
+              </span>
+              {project.badges.map((badge) => (
+                <span class="badge">{badge}</span>
+              ))}
+            </div>
+          </button>
+
+          <div id={`drawer-${project.id}`} class="project-drawer">
+            <div class="drawer-content">
+            <div class="media-gallery">
+                {project.media.map((item) => (
+              <div class="media-item">
+                {item.type === "video" ? (
+                  <video 
+                    src={`${baseUrl}${item.src}`} 
+                    poster={item.poster ? `${baseUrl}${item.poster}` : undefined} 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                  />
+                ) : (
+                  <img 
+                    src={`${baseUrl}${item.src}`} 
+                    alt={`${project.client} - ${project.title}`} 
+                    loading="lazy" 
+                  />
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div class="info-block">
+                <p class="description">{project.description}</p>
+                {project.technicalSpecs && (
+                  <div class="specs-block">
+                    <p class="spec-line">
+                      <span class="spec-label">MASTER:</span> {project.technicalSpecs.master}
+                    </p>
+                    <p class="spec-line">
+                      <span class="spec-label">SOUND:</span> {project.technicalSpecs.sound}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initAccordion() {
+    const triggers = document.querySelectorAll<HTMLButtonElement>(".project-trigger");
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const item = trigger.closest<HTMLElement>(".project-item");
+        if (!item) return;
+
+        const togglePill = item.querySelector<HTMLElement>(".toggle-pill");
+        if (!togglePill) return;
+
+        const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+        
+        document.querySelectorAll<HTMLElement>(".project-item").forEach((otherItem) => {
+          if (otherItem !== item && otherItem.classList.contains("is-open")) {
+            const otherTrigger = otherItem.querySelector<HTMLButtonElement>(".project-trigger");
+            const otherPill = otherItem.querySelector<HTMLElement>(".toggle-pill");
+
+            otherTrigger?.setAttribute("aria-expanded", "false");
+            otherItem.classList.remove("is-open");
+            if (otherPill) {
+              otherPill.textContent = otherPill.getAttribute("data-closed-label") || "VER CONTENIDO";
+            }
+          }
+        });
+
+        
+        if (isExpanded) {
+          trigger.setAttribute("aria-expanded", "false");
+          item.classList.remove("is-open");
+          togglePill.textContent = togglePill.getAttribute("data-closed-label") || "VER CONTENIDO";
+        } else {
+          trigger.setAttribute("aria-expanded", "true");
+          item.classList.add("is-open");
+          togglePill.textContent = togglePill.getAttribute("data-open-label") || "OCULTAR";
+          
+          
+          setTimeout(() => {
+            const offset = 80;
+            const y = item.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }, 350);
+        }
+      });
+    });
+  }
+
+  initAccordion();
+  document.addEventListener("astro:after-swap", initAccordion);
+</script>
+
+
+<style>
+  .projects-section {
+    background-color: var(--color-moon);
+    color: var(--color-granola);
+    padding: var(--section-padding);
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .projects-accordion {
+    border-top: 1px solid color-mix(in srgb, var(--color-woods) 30%, transparent);
+  }
+
+  .project-item {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-woods) 25%, transparent);
+    transition: background-color 0.3s ease;
+  }
+
+  .project-item.is-open {
+    background-color: color-mix(in srgb, var(--color-woods) 8%, transparent);
+  }
+
+  .project-trigger {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 36px 0;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-granola);
+    opacity: 0.65;
+  }
+
+  .heading-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .client-name {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--color-granola);
+    line-height: 1.1;
+  }
+
+  .project-title {
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: color-mix(in srgb, var(--color-granola) 65%, transparent);
+    line-height: 1.4;
+    margin-top: 8px;
+  }
+
+  .badges-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  .toggle-pill {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-granola);
+    border: 1px solid var(--color-granola);
+    padding: 4px 12px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .project-item.is-open .toggle-pill {
+    background-color: var(--color-granola);
+    color: var(--color-moon);
+  }
+
+  .badge {
+    font-family: var(--font-body);
+    font-size: var(--fs-badge);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-granola);
+    border: 1px solid color-mix(in srgb, var(--color-woods) 50%, transparent);
+    padding: 4px 8px;
+    border-radius: 2px;
+    opacity: 0.75;
+  }
+
+.project-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .project-item.is-open .project-drawer {
+    grid-template-rows: 1fr;
+  }
+
+.drawer-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 0px;
+    opacity: 0;
+    transition: padding-bottom 0.4s ease, opacity 0.3s ease;
+  }
+
+
+  .drawer-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 0px;
+    opacity: 0;
+    transition: padding-bottom 0.4s ease, opacity 0.3s ease;
+  }
+
+  .project-item.is-open .drawer-content {
+    padding-bottom: 40px;
+    opacity: 1;
+  }
+
+.media-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+
+  .media-item {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: color-mix(in srgb, var(--color-woods) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-woods) 30%, transparent);
+  }
+
+  .media-item img,
+  .media-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .info-block {
+    max-width: 820px;
+  }
+
+  .description {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--color-granola);
+    opacity: 0.85;
+    margin: 0 0 16px 0;
+  }
+
+  .specs-block {
+    border-top: 1px solid color-mix(in srgb, var(--color-woods) 20%, transparent);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .spec-line {
+    font-family: var(--font-body);
+    font-size: var(--fs-meta);
+    line-height: 1.5;
+    color: var(--color-granola);
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .spec-label {
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .project-trigger {
+      padding: 24px 0;
+    }
+
+    .heading-row {
+      gap: 6px;
+    }
+
+    .meta-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+  }
+</style>
