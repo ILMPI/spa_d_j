@@ -5,6 +5,8 @@ import Hero from '../components/sections/Hero.astro';
 import About from '../components/sections/About.astro';
 import Services from '../components/sections/Services.astro';
 import Projects from '../components/sections/Projects.astro';
+import Network from '../components/sections/Network.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Dalton Jáuregui" lang="es">
@@ -23,15 +25,14 @@ import Projects from '../components/sections/Projects.astro';
   <Projects/>
 
     <!-- 05. Nuestros colaboradores -->
-    <section id="network">
-      <h2>Our Network</h2>
-    </section>
+    <Network/>
 
     <!-- 06. Contacto -->
     <section id="contacto">
       <h2>Let's create something meaningful.</h2>
     </section>
 	</main>
+  <Footer/>
 </Layout>
 
 <style>

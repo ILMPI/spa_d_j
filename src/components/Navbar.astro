@@ -46,6 +46,8 @@ const t = useTranslations(lang);
       <div class="lang-switcher mobile-link">
         <a href={`${import.meta.env.BASE_URL}`} class={lang === 'es' ? 'active' : ''}>ES</a>
         <span class="divider">/</span>
+        <a href={`${import.meta.env.BASE_URL}/eus/`} hreflang="eu" lang="eu" aria-label="Euskara">EUS</a>
+        <span aria-hidden="true">/</span>
         <a href={`${import.meta.env.BASE_URL}/en/`} class={lang === 'en' ? 'active' : ''}>EN</a>
       </div>
     </nav>
