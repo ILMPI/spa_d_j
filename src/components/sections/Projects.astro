@@ -11,8 +11,8 @@ interface Project {
   id: string;
   category: string;
   credits: string;
-  client: string;
-  title: string;
+  subtitle: string;
+  subsubtitle: string;
   year: string;
   badges: string[];
   media: MediaItem[];
@@ -28,8 +28,8 @@ const projects: Project[] = [
     id: "ident-audiovisual",
     category: "ORIGINAL IP",
     credits: "ELU ANIMATIONS · ARTLIST",
-    client: "IDENT",
-    title: "AUDIOVISUAL",
+    subtitle: "IDENT",
+    subsubtitle: "AUDIOVISUAL",
     year: "2026",
     badges: ["ORIGINAL IP", "EXECUTIVE PRODUCTION", "SOUND"],
     media: [
@@ -42,57 +42,45 @@ const projects: Project[] = [
     }
   },
 {
-    id: "private-dining-biennale",
+    id: "le-centaure",
     category: "BUSINESS & CORPORATE",
-    credits: "PRIVATE OFFICE · CHEF RESIDENCY",
-    client: "BIENNALE DI VENEZIA",
-    title: "PRIVATE HOSTING & GOURMET",
-    year: "2025",
-    badges: ["GOURMET", "HOSPITALITY", "EVENTS"],
+    credits: "HÍPICA GOPEGUI · 5-7 MARZO 2027",
+    subtitle: "LE CENTAURE",
+    subsubtitle: "TORNEO INTERNACIONAL DE TREC",
+    year: "2027",
+    badges: ["LOGISTICS", "HOSPITALITY", "EVENTS"],
         media: [
-      {type: "image", src: "/assets/projects/venice-gourmet.jpg"}
+      {type: "image", src: "/assets/projects/le-centaure.jpg"}
     ],
-    description: "Diseño de experiencia gastronómica privada, maridaje de autor y gestión integral de hospitalidad para patronos y coleccionistas internacionales."
+    description: "Colaboración en la organización y la logística de esta prueba internacional de orientación y regularidad ecuestre (POR)."
   },
 {
-    id: "artist-management-tour",
+    id: "mienteme-videoclip",
     category: "CULTURE & CREATIVE",
-    credits: "LIVE ENTERTAINMENT · SONY MUSIC",
-    client: "GIRA INTERNACIONAL",
-    title: "TOUR DIRECTION & BOOKING",
+    credits: "LIVE ENTERTAINMENT",
+    subtitle: "MIÉNTEME",
+    subsubtitle: "VIDEOCLIP MUSICAL",
     year: "2025",
-    badges: ["ARTIST MANAGEMENT", "LIVE PRODUCTION", "MUSIC"],
+    badges: ["LIVE PRODUCTION", "MUSIC", "STYLING"],
     media: [
-      {type: "image", src: "/assets/projects/artist-tour.jpg"}
+      {type: "image", src: "/assets/projects/mienteme.jpeg"}
     ],
-    description: "Representación estratégica, producción técnica de directo y coordinación logística de movilidad premium a lo largo de 14 recintos europeos."
+    description: "Producción, dirección, ambientación y diseño de vestuario para videoclip de autor."
   },
 {
-    id: "luxury-mobility-summit",
-    category: "BUSINESS & CORPORATE",
-    credits: "MOBILITY DESK · PRIVATE FLEET",
-    client: "GLOBAL ASSET FORUM",
-    title: "TRANSPORT & LOGISTICS",
-    year: "2024",
-    badges: ["LOGISTICS", "MOBILITY", "OPERATIONS"],
-    media: [
-      {type: "image", src: "/assets/projects/summit-logistics.jpg"}
-    ],
-    description: "Operativa integral de transporte premium, custodia y traslados privados para delegaciones institucionales durante el foro de inversión."
-  },
-{
-    id: "documentary-film",
+    id: "las-puertas-del-infierno",
     category: "CULTURE & CREATIVE",
-    credits: "STUDIO PRODUCTION · 35MM",
-    client: "LARGOMETRAJE DOCUMENTAL",
-    title: "MEMORIA Y TERRITORIO",
-    year: "2024",
-    badges: ["AUDIOVISUAL", "DIRECTION", "COLOR"],
+    credits: "STUDIO PRODUCTION",
+    subtitle: "LAS PUERTAS DEL INFIERNO",
+    subsubtitle: "CORTOMETRAJE",
+    year: "2025",
+    badges: ["AUDIOVISUAL", "PRODUCTION", "DIRECTION"],
     media: [
-      {type: "image", src: "/assets/projects/documentary-territorio.jpg"},
-      {type: "video", src: "/assets/projects/house.mp4"}
+      {type: "image", src: "/assets/projects/las-puertas-del-infierno-1.jpeg"},
+      {type: "image", src: "/assets/projects/las-puertas-del-infierno-2.jpeg"},
+      //{type: "video", src: "/assets/projects/las-puertas-del-infierno.mp4"}
     ],
-    description: "Producción ejecutiva y dirección de fotografía en 35mm para documental de autor enfocado en arquitectura vernácula y patrimonio cultural."
+    description: "Producción y dirección para cortometraje de autor enfocado en la adolescencia."
   }
 ];
 ---
@@ -102,8 +90,8 @@ const projects: Project[] = [
     
     <header class="section-header">
       <span class="tag">03 / PROYECTOS SELECCIONADOS</span>
-      <h2 class="section-title">Historias que trascienden.</h2>
-      <p class="section-subtitle">
+      <h2 class="section-subtitle">Historias que trascienden.</h2>
+      <p class="section-subsubtitle">
         Iniciativas y producciones que combinan rigor estratégico, talento creativo y estándares de ejecución técnica.
       </p>
     </header>
@@ -123,8 +111,8 @@ const projects: Project[] = [
             </div>
 
             <div class="heading-row">
-              <h3 class="client-name">{project.client}</h3>
-              <span class="project-title">{project.title}</span>
+              <h3 class="subtitle-name">{project.subtitle}</h3>
+              <span class="project-subsubtitle">{project.subsubtitle}</span>
             </div>
 
             <div class="badges-row">
@@ -158,7 +146,7 @@ const projects: Project[] = [
                 ) : (
                   <img 
                     src={`${baseUrl}${item.src}`} 
-                    alt={`${project.client} - ${project.title}`} 
+                    alt={`${project.subtitle} - ${project.subtitle}`} 
                     loading="lazy" 
                   />
                     )}
@@ -298,7 +286,7 @@ const projects: Project[] = [
     flex-wrap: wrap;
   }
 
-  .client-name {
+  .subtitle-name {
     font-family: var(--font-heading);
     font-size: var(--fs-h2);
     font-weight: 400;
@@ -306,7 +294,7 @@ const projects: Project[] = [
     line-height: 1.1;
   }
 
-  .project-title {
+  .project-subsubtitle {
     font-family: var(--font-body);
     font-size: var(--fs-meta);
     font-weight: 300;
