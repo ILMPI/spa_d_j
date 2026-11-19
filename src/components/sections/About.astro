@@ -1,3 +1,88 @@
-    <section id="quienes-somos">
-      <h2>Quienes somos</h2>
-    </section>
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  paragraphs?: string[];
+  pillars?: string;
+}
+
+const {
+  id = "quienes-somos",
+  eyebrow,
+  title = "Quiénes somos",
+  paragraphs = [
+    "Somos una firma multidisciplinar orientada a la gestión, desarrollo y proyección de proyectos empresariales, creativos y culturales. Combinamos gestión operativa y desarrollo creativo bajo una estructura flexible capaz de adaptarse a empresas, marcas, artistas, instituciones y eventos.",
+    "Trabajamos desde un modelo preciso, adaptable y orientado al largo plazo, manteniendo siempre una misma línea:",
+  ],
+  pillars = "estructura - proyección - criterio.",
+} = Astro.props;
+---
+
+<section id={id} class="about-section" aria-labelledby="about-heading">
+  <div class="about-container">
+    {eyebrow && <span class="about-eyebrow">{eyebrow}</span>}
+    <h2 id="about-heading" class="about-title">{title}</h2>
+
+    <div class="about-body">
+      {paragraphs.map((text) => <p>{text}</p>)}
+    </div>
+
+    {pillars && <p class="about-pillars">{pillars}</p>}
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background-color: var(--color-moon);
+    color: var(--color-granola);
+    padding: clamp(4rem, 10vh, 7.5rem) var(--spacing-x);
+    scroll-margin-top: 5rem;
+  }
+
+  .about-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .about-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .about-title {
+    font-family: "Cinzel Decorative", serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .about-body {
+    max-width: 65ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-body p {
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .about-pillars {
+    margin: 0.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid currentColor;
+    max-width: 65ch;
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+</style>
