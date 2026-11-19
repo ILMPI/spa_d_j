@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/sections/Hero.astro";
+import About from "../../components/sections/About.astro";
+import Services from "../../components/sections/Services.astro";
+import Projects from '../../components/sections/Projects.astro';
+import Network from '../../components/sections/Network.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Dalton Jáuregui | Negozioak eta Kultura" lang="eus">
+  <Navbar />
+  <main>
+
+   <!-- 01. Inicio -->
+	<Hero/>
+
+    <!-- 02. Quiénes somos -->
+	<About/>
+
+    <!-- 03. Servicios -->
+	<Services/>
+
+    <!-- 04. Proyectos -->
+  <Projects/>
+
+    <!-- 05. Nuestros colaboradores -->
+    <Network/>
+
+    <!-- 06. Contacto -->
+    <section id="contacto">
+      <h2>Let's create something meaningful.</h2>
+    </section>
+	</main>
+   <Footer/>
+</Layout>
