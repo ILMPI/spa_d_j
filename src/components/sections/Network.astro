@@ -1,0 +1,44 @@
+---
+interface Props {
+  id?: string;
+  tag?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  id = "network",
+  tag = "04 / OUR NETWORK",
+  title = "Exceptional people. Selected partners.",
+  description = "Trabajamos con un núcleo propio apoyado por una red seleccionada de profesionales, especialistas y compañías especializadas que ampliamos y combinamos según las necesidades de cada proyecto.",
+} = Astro.props;
+---
+
+<section id={id} class="network-section" aria-labelledby="network-heading">
+  <div class="container">
+    <header class="section-header">
+      {tag && <span class="tag">{tag}</span>}
+      <h2 id="network-heading" class="section-title">{title}</h2>
+      <p class="section-subtitle network-description">{description}</p>
+    </header>
+  </div>
+</section>
+
+<style>
+  .network-section {
+    background-color: var(--color-moon);
+    color: var(--color-granola);
+    padding: var(--section-padding);
+    border-top: 1px solid color-mix(in srgb, var(--color-woods) 25%, transparent);
+    scroll-margin-top: 5rem;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .network-description {
+    max-width: 65ch;
+  }
+</style>
